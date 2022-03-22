@@ -3,6 +3,7 @@
     <router-link to="/login">登录页</router-link>
     <router-link to="/main">首页</router-link>
     <h1>{{ $store.state.name }}</h1>
+    <el-button type="primary">新增</el-button>
     <router-view />
   </div>
 </template>

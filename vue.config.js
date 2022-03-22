@@ -8,5 +8,6 @@ module.exports = defineConfig({
         '@': path.resolve(__dirname, 'src')
       }
     }
-  }
+  },
+  publicPath: './'
 })
