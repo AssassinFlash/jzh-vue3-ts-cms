@@ -1,5 +1,5 @@
-import { App } from 'vue'
+// import { App } from 'vue'
 
-export default function registerApp(app: App): void {
-  // app.use(...)
-}
+// export default function registerApp(app: App): void {
+//   // app.use(...)
+// }

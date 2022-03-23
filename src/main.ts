@@ -7,20 +7,15 @@ import store from './store'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
-import registerApp from './global'
+// 导入全局重置样式
+import 'normalize.css'
+import './assets/css/index.less'
 
-import hyRequest from './service'
-hyRequest
-  .get({
-    url: '/home/multidata'
-  })
-  .then((res) => {
-    console.log(res)
-  })
+// import registerApp from './global'
 
 const app = createApp(App)
 app.use(router)
 app.use(store)
 app.use(ElementPlus)
-registerApp(app)
+// registerApp(app)
 app.mount('#app')

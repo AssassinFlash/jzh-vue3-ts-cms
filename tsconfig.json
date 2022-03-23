@@ -1,30 +1,32 @@
 {
-	"compilerOptions": {
-		"target": "esnext",
-		"module": "esnext",
-		"strict": true,
-		"jsx": "preserve",
-		"moduleResolution": "node",
-		"skipLibCheck": true,
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
-		"forceConsistentCasingInFileNames": true,
-		"useDefineForClassFields": true,
-		"sourceMap": true,
-		"baseUrl": ".",
-		"types": ["webpack-env","element-plus/global"],
-		"paths": {
-			"@/*": ["src/*"]
-		},
-		"lib": ["esnext", "dom", "dom.iterable", "scripthost"]
-	},
-	"include": [
-		"src/**/*.ts",
-		"src/**/*.tsx",
-		"src/**/*.vue",
-		"tests/**/*.ts",
-		"tests/**/*.tsx"
-	],
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext", // 目标代码需要使用的模块化方案
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node", // 按照 node 的方式去解析模块
+    "skipLibCheck": true,
+    "esModuleInterop": true, // es module 和 commonjs 能否互相使用
+    "allowSyntheticDefaultImports": true,
 
-	"exclude": ["node_modules"]
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
+    "sourceMap": true, // ts -> js 的映射文件
+    "baseUrl": ".", // 文件路径在解析时的基本路径
+    "types": ["webpack-env", "element-plus/global"], // 指定具体要解析使用的类型，来自于target
+    "paths": {
+      // 编译阶段的路径解析：@对应的路径是src/，类似于 webpack 的 alias
+      "@/*": ["src/*"]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"] // 指定项目中可使用的库的类型
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+
+  "exclude": ["node_modules"]
 }
