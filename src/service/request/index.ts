@@ -26,7 +26,7 @@ export default class HYRequest {
 
     // 全局拦截器
     this.instance.interceptors.request.use(
-      (config: HYRequestConfig) => {
+      (config) => {
         this.loading = ElLoading.service({
           lock: true,
           background: 'rgba(0,0,0,0.5)',
@@ -53,7 +53,7 @@ export default class HYRequest {
 
   // 返回 Promise 类型需要指定返回的数据类型，由于数据类型未知，设置为泛型T
   // 表示返回的数据类型为T
-  request<T>(config: HYRequestConfig<T>): Promise<T> {
+  request<T>(config: HYRequestConfig): Promise<T> {
     return new Promise((resolve, reject) => {
       this.instance
         .request<any, T>(config)
@@ -66,19 +66,19 @@ export default class HYRequest {
     })
   }
 
-  get<T>(config: HYRequestConfig<T>): Promise<T> {
+  get<T>(config: HYRequestConfig): Promise<T> {
     return this.request<T>({ ...config, method: 'GET' })
   }
 
-  post<T>(config: HYRequestConfig<T>): Promise<T> {
+  post<T>(config: HYRequestConfig): Promise<T> {
     return this.request<T>({ ...config, method: 'POST' })
   }
 
-  delete<T>(config: HYRequestConfig<T>): Promise<T> {
+  delete<T>(config: HYRequestConfig): Promise<T> {
     return this.request<T>({ ...config, method: 'DELETE' })
   }
 
-  patch<T>(config: HYRequestConfig<T>): Promise<T> {
+  patch<T>(config: HYRequestConfig): Promise<T> {
     return this.request<T>({ ...config, method: 'PATCH' })
   }
 }

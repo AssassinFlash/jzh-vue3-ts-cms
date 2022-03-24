@@ -46,7 +46,7 @@ const isKeepPassword = ref(true)
 
 // 点击登录
 const handleLoginClick = () => {
-  accountRef.value?.loginAction()
+  accountRef.value?.loginAction(isKeepPassword.value)
 }
 </script>
 

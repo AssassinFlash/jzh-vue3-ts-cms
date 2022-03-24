@@ -12,10 +12,12 @@ import 'normalize.css'
 import './assets/css/index.less'
 
 // import registerApp from './global'
+import { setupStore } from './store'
 
 const app = createApp(App)
 app.use(router)
 app.use(store)
 app.use(ElementPlus)
 // registerApp(app)
+setupStore()
 app.mount('#app')
