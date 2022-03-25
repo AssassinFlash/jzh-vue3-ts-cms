@@ -11,6 +11,9 @@ import 'element-plus/dist/index.css'
 import 'normalize.css'
 import './assets/css/index.less'
 
+// 导入 element-plus 图标
+import installIcons from './icons'
+
 // import registerApp from './global'
 import { setupStore } from './store'
 
@@ -19,5 +22,6 @@ app.use(router)
 app.use(store)
 app.use(ElementPlus)
 // registerApp(app)
+installIcons(app)
 setupStore()
 app.mount('#app')
