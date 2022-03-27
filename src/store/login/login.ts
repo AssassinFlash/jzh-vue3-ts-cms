@@ -10,6 +10,7 @@ import {
 } from '@/service/login/login'
 import { IAccount } from '@/service/login/type'
 import localCache from '@/utils/cache'
+import { mapMenusToRoutes } from '@/utils/map-menus'
 
 const login: Module<ILoginState, IRootState> = {
   namespaced: true,
@@ -29,6 +30,12 @@ const login: Module<ILoginState, IRootState> = {
     },
     changeUserMenus(state: ILoginState, userMenus: any) {
       state.userMenus = userMenus
+
+      // 获取根据 userMenus 生成的路由映射，加入到 routes.main.children 数组中
+      const routes = mapMenusToRoutes(userMenus)
+      routes.forEach((route) => {
+        router.addRoute('main', route)
+      })
     }
   },
   getters: {},

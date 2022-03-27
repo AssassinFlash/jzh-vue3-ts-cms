@@ -10,6 +10,7 @@
       default-active="2"
       class="el-menu-vertical"
       unique-opened
+      router
       background-color="#001529"
       text-color="#d2d5da"
       active-text-color="#f8d263"
