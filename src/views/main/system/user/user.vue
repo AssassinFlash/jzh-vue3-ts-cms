@@ -1,9 +1,15 @@
 <template>
   <div class="user">
-    <h2>user</h2>
+    <div class="search">
+      <HyForm v-bind="searchformConfig" />
+    </div>
+    <div class="content"></div>
   </div>
 </template>
 
-<script setup></script>
+<script lang="ts" setup>
+import HyForm from '@/base-ui/form'
+import searchformConfig from './config/search.config'
+</script>
 
 <style scoped></style>
