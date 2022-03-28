@@ -14,6 +14,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/main',
+    redirect: '/main/analysis/overview',
     name: 'main',
     component: () => import('@/views/main/main.vue')
     // children: [] => 根据 userMenus 来决定

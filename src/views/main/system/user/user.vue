@@ -1,7 +1,7 @@
 <template>
   <div class="user">
     <div class="search">
-      <HyForm v-bind="searchformConfig" />
+      <HyForm v-bind="formConfig" />
     </div>
     <div class="content"></div>
   </div>
@@ -9,7 +9,7 @@
 
 <script lang="ts" setup>
 import HyForm from '@/base-ui/form'
-import searchformConfig from './config/search.config'
+import formConfig from './config/search.config'
 </script>
 
 <style scoped></style>

@@ -7,7 +7,7 @@
 
     <el-menu
       :collapse="isCollapsed"
-      default-active="2"
+      :default-active="activeIndex"
       class="el-menu-vertical"
       unique-opened
       router
@@ -48,11 +48,20 @@
 
 <script lang="ts" setup>
 import { useStore } from '@/store'
-import { computed, defineProps } from 'vue'
+import { useRoute } from 'vue-router'
+import { ref, computed, defineProps, watchEffect } from 'vue'
 
 defineProps(['isCollapsed'])
 
 const store = useStore()
+const route = useRoute()
+
+// 菜单默认激活项：解决刷新时丢失菜单激活项的问题
+// 值为当前路由
+const activeIndex = ref('')
+const setActiveIndex = () => {
+  activeIndex.value = route.path
+}
 
 // 获取用户菜单
 const userMenus = computed(() => {
@@ -62,6 +71,8 @@ const userMenus = computed(() => {
     return item
   })
 })
+
+watchEffect(() => setActiveIndex())
 </script>
 
 <style lang="less" scoped>

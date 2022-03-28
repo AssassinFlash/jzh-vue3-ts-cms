@@ -18,10 +18,10 @@ import installIcons from './icons'
 import { setupStore } from './store'
 
 const app = createApp(App)
-app.use(router)
 app.use(store)
+setupStore()
 app.use(ElementPlus)
 // registerApp(app)
+app.use(router) // -> install(){} -> 获取当前path -> router.routes -> notFound
 installIcons(app)
-setupStore()
 app.mount('#app')

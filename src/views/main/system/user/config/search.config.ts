@@ -1,24 +1,25 @@
+// 用户页传给form表单的配置
 import { IForm } from '@/base-ui/form'
 
-const searchformConfig: IForm = {
+const formConfig: IForm = {
   formItems: [
     {
       label: '用户名',
-      placeholder: '请输入用户名',
-      type: 'input'
+      type: 'input',
+      placeholder: '请输入用户名'
     },
     {
       label: '密码',
-      placeholder: '请输入密码',
-      type: 'password'
+      type: 'password',
+      placeholder: '请输入密码'
     },
     {
       label: '喜欢的运动',
-      placeholder: '请选择喜欢的运动',
       type: 'select',
+      placeholder: '请选择喜欢的运动',
       options: [
-        { title: '篮球', value: 'basketball' },
-        { title: '足球', value: 'football' }
+        { label: '篮球', value: 'basketball' },
+        { label: '足球', value: 'football' }
       ]
     },
     {
@@ -32,14 +33,7 @@ const searchformConfig: IForm = {
     }
   ],
   labelWidth: '100px',
-  itemStyle: { padding: '10px 40px' },
-  colWidth: {
-    xg: 6,
-    lg: 8,
-    md: 12,
-    sm: 24,
-    xs: 24
-  }
+  itemStyle: { padding: '10px 40px' }
 }
 
-export default searchformConfig
+export default formConfig

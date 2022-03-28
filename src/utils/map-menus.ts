@@ -1,7 +1,7 @@
+import { IBreadCrumb } from '@/base-ui/breadcrumb'
+import { RouteRecordRaw } from 'vue-router'
 // 从所有的路由 - 组件映射中，根据 userMenus 找到符合条件的映射，加入到routes数组中
 // 随后添加到routes.main.children数组中，这就是动态添加路由
-import { RouteRecordRaw } from 'vue-router'
-
 export const mapMenusToRoutes = (userMenus: any[]) => {
   const routes: RouteRecordRaw[] = []
 
@@ -28,4 +28,20 @@ export const mapMenusToRoutes = (userMenus: any[]) => {
   _recurseGetRoute(userMenus)
 
   return routes
+}
+
+// 根据路由找到上级菜单，加入到面包屑
+export const pathMapBreadCrumbs = (userMenus: any[], currentPath: string) => {
+  const breadcrumbs: IBreadCrumb[] = []
+  userMenus.forEach((firstMenu) => {
+    if (firstMenu.type === 1) {
+      firstMenu.children.forEach((secondMenu: any) => {
+        if (secondMenu.url === currentPath) {
+          breadcrumbs.unshift({ name: secondMenu.name })
+          breadcrumbs.unshift({ name: firstMenu.name })
+        }
+      })
+    }
+  })
+  return breadcrumbs
 }

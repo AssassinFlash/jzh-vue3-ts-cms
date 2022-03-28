@@ -2,45 +2,40 @@
   <div class="hy-form">
     <el-form :label-width="labelWidth">
       <el-row>
-        <template v-for="(item, index) in formItems" :key="index">
-          <el-col v-bind="colWidth">
-            <el-form-item :label="item.label" :style="itemStyle">
-              <template v-if="item.type === 'input'">
-                <el-input :placeholder="item.placeholder" />
-              </template>
-              <template v-else-if="item.type === 'password'">
-                <el-input :placeholder="item.placeholder" show-password />
-              </template>
-              <template v-else-if="item.type === 'datepicker'">
-                <el-date-picker
-                  v-bind="item.otherOptions"
-                  style="width: 100%"
+        <el-col
+          v-for="(item, index) in formItems"
+          :key="index"
+          v-bind="colWidth"
+        >
+          <el-form-item :label="item.label" :style="itemStyle">
+            <template v-if="item.type === 'input' || item.type === 'password'">
+              <el-input
+                :placeholder="item.placeholder"
+                :show-password="item.type === 'password'"
+              />
+            </template>
+            <template v-else-if="item.type === 'select'">
+              <el-select :placeholder="item.placeholder" style="width: 100%">
+                <el-option
+                  v-for="(option, i) in item.options"
+                  :key="i"
+                  :label="option.label"
+                  :value="option.value"
                 />
-              </template>
-              <template v-else>
-                <el-select
-                  v-bind="item.otherOptions"
-                  :placeholder="item.placeholder"
-                  style="width: 100%"
-                >
-                  <el-option
-                    v-for="(option, i) in item.options"
-                    :key="i"
-                    :label="option.title"
-                    :value="option.value"
-                  />
-                </el-select>
-              </template>
-            </el-form-item>
-          </el-col>
-        </template>
+              </el-select>
+            </template>
+            <template v-else>
+              <el-date-picker v-bind="item.otherOptions" style="width: 100%" />
+            </template>
+          </el-form-item>
+        </el-col>
       </el-row>
     </el-form>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { IFormItem } from '@/base-ui/form/types'
+import type { IFormItem } from '../types'
 import { defineProps, PropType } from 'vue'
 
 defineProps({
@@ -59,7 +54,7 @@ defineProps({
   colWidth: {
     type: Object,
     default: () => ({
-      xl: 6, // > 1920: 4个
+      xg: 6,
       lg: 8,
       md: 12,
       sm: 24,
@@ -69,7 +64,7 @@ defineProps({
 })
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .hy-form {
   padding-top: 20px;
 }

@@ -1,6 +1,5 @@
 // 该传的值的类型
-type IFormType = 'input' | 'password' | 'select' | 'datepicker'
-
+type IFormType = 'input' | 'select' | 'password' | 'datepicker'
 export interface IFormItem {
   label: string
   rules?: any[]
@@ -8,13 +7,13 @@ export interface IFormItem {
   type: IFormType
   // 针对 select
   options?: any[]
-  // 针对特殊的属性
+  // 针对其他 options
   otherOptions?: any
 }
 
 export interface IForm {
   formItems: IFormItem[]
-  labelWidth: string
-  itemStyle: any
-  colWidth: any
+  labelWidth?: string
+  itemStyle?: any
+  colWidth?: any
 }
