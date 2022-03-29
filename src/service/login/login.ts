@@ -1,6 +1,7 @@
 // 登录请求的逻辑
 import hyRequest from '..'
-import { IAccount, ILoginResult, IDataType } from './type'
+import { IAccount, ILoginResult } from './type'
+import { IDataType } from '@/service/types'
 
 enum LoginAPI {
   AccountLogin = '/login',

@@ -45,3 +45,23 @@ export const pathMapBreadCrumbs = (userMenus: any[], currentPath: string) => {
   })
   return breadcrumbs
 }
+
+export const _recursePathMapBreadCrumbs = (
+  userMenus: any[],
+  currentPath: string
+) => {
+  const breadcrumbs: IBreadCrumb[] = []
+  for (const menu of userMenus) {
+    if (menu.type === 1) {
+      const findMenu = _recursePathMapBreadCrumbs(menu.children, currentPath)
+      if (findMenu) {
+        breadcrumbs.push({ name: menu.name }, { name: findMenu.name })
+        return breadcrumbs
+      }
+    } else {
+      if (menu.url === currentPath) {
+        return menu
+      }
+    }
+  }
+}

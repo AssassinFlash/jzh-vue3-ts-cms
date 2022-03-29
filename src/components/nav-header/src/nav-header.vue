@@ -19,7 +19,7 @@
 import HyBreadCrumb from '@/base-ui/breadcrumb'
 import UserInfo from './cpns/user-info'
 import type { IBreadCrumb } from '@/base-ui/breadcrumb'
-import { pathMapBreadCrumbs } from '@/utils/map-menus'
+import { _recursePathMapBreadCrumbs } from '@/utils/map-menus'
 import { useStore } from '@/store'
 import { useRoute } from 'vue-router'
 import { ref, defineEmits, watch, computed } from 'vue'
@@ -41,7 +41,7 @@ const handleFoldChange = () => {
 const userMenus = computed(() => store.state.login.userMenus)
 const breadcrumbs = ref<IBreadCrumb[]>([])
 const setBreadCrumbs = () => {
-  breadcrumbs.value = pathMapBreadCrumbs(userMenus.value, route.path)
+  breadcrumbs.value = _recursePathMapBreadCrumbs(userMenus.value, route.path)
 }
 
 watch(

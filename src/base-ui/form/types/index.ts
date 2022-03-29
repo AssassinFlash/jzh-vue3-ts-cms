@@ -1,6 +1,7 @@
 // 该传的值的类型
 type IFormType = 'input' | 'select' | 'password' | 'datepicker'
 export interface IFormItem {
+  field: string
   label: string
   rules?: any[]
   placeholder?: any
