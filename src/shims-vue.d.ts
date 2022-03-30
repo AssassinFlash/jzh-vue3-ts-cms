@@ -6,3 +6,4 @@ declare module '*.vue' {
 }
 
 declare let $store: any // 解决 找不到 $store 的问题
+declare let $filters: any
